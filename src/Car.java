@@ -34,6 +34,11 @@ public class Car extends Transport implements Competing {
 
     }
 
+    @Override
+    public boolean passDiagnostics() {
+        return Math.random()> 0.7;
+    }
+
 
     @Override
     public String pitStop() {

@@ -36,6 +36,11 @@ public class Cargo extends Transport implements Competing {
 
     }
 
+    @Override
+    public boolean passDiagnostics() {
+        return Math.random()> 0.75;
+    }
+
 
     @Override
     public String pitStop() {

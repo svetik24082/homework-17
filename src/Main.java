@@ -55,21 +55,43 @@ public class Main {
         cargo.pitStop();
         cargo.bestLapTime();
         cargo.maximumSpeed();
+        passDiagnostics(car,car1,car2,car3,
+                cargo,cargo1,cargo2,cargo3,
+                bus,bus1,bus2,bus3);
 
-        Driver<Car> driver = new Driver<>("А", "В", 15);
-        Driver<Cargo> driver1 = new Driver<>("A", "C", 20);
-        Driver<Bus> driver2 = new Driver<>("A", "Д", 20);
+        Driver driverB = new DriverB("А", 5, car1);
+        Driver driverC = new DriverC("A", 5, cargo1);
+        Driver driverD = new DriverD("A", 5, bus1);
 
 
-        driver.driveCar(car);
-        driver1.driveCar(cargo);
-        driver2.driveCar(bus);
+        System.out.println(driverB);
+        System.out.println(driverC);
+        System.out.println(driverD);
 
-        
         car.determineTheTypeOfCar();
         cargo.determineTheTypeOfCar();
         bus.determineTheTypeOfCar();
+    }
+    private static void passDiagnostics(Transport...transports){
+        for (Transport transport:transports){
+
+                serviceTransport(transport);
+            }
+
+                }
 
 
-    }}
+
+
+private static void serviceTransport(Transport transport){
+    try {
+        if (!transport.passDiagnostics()) {
+            throw new RuntimeException(" Автомобиль" + transport.getMake() +
+                    " " + transport.getModel() + " не прошел диагностику");
+        }
+    }catch (RuntimeException c){
+        System.out.println(c.getMessage());
+    }
+}}
+
 
