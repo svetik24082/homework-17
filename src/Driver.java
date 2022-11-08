@@ -17,7 +17,8 @@ public class Driver <T extends Transport> {
         return "Водитель " +
                 fullName +
                 ", управляет автомобилем " + car.getMake() + " " + car.getModel() +
-                " , будет учавствовать в заезде. ";
+                " , будет учавствовать в заезде. "+
+          fullName+ driverSLicense+experience;
 
     }
 
