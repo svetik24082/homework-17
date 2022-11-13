@@ -87,6 +87,12 @@ public abstract class Transport implements Competing {
     public abstract boolean passDiagnostics();
     public abstract void repair();
 
-   // private ArrayList<Transport> transports;
+    public abstract boolean  service();
 
-}
+
+    }
+
+
+    // private ArrayList<Transport> transports;
+
+

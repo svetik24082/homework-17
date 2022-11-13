@@ -46,6 +46,11 @@ public class Cargo extends Transport implements Competing {
         System.out.println( "Грузовик " + getMake() + " "+getModel()+ " починена" );
     }
 
+    @Override
+    public boolean service() {
+        return Math.random()> 0.8;
+    }
+
 
     @Override
     public String pitStop() {

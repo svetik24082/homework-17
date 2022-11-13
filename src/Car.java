@@ -41,9 +41,14 @@ public class Car extends Transport implements Competing {
 
     @Override
     public void repair() {
-        System.out.println( " Машина" + getMake() + " "+getModel()+ " починена" );
+        System.out.println( " Машина " + getMake() + " " +getModel()+ " починена" );
 
 
+    }
+
+    @Override
+    public boolean service() {
+        return Math.random()> 0.7;
     }
 
 

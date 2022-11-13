@@ -57,6 +57,11 @@ public class Bus extends Transport implements Competing {
 
     }
 
+    @Override
+    public boolean service() {
+        return Math.random()> 0.9;
+    }
+
 
     @Override
         public String pitStop () {

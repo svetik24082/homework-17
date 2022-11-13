@@ -11,7 +11,7 @@ public class Main {
         Mechanic<Transport> petr = new Mechanic<>("Петр", "Зимний", "Раша");
         Sponsor rosnefty = new Sponsor("Роснефть", 3_500_000);
         Sponsor nokian = new Sponsor("нокиан", 2_500_000);
-        Car car = new Car("Лада", null, 0, BodyType.SEDAN);
+        Car car = new Car("Лада", "Гранта", 0, BodyType.SEDAN);
 
         car.addDriver(new DriverB(" А", 10, car));
         car.addMechanic(ivan);
@@ -89,6 +89,14 @@ public class Main {
         List<Transport> transports = List.of(car,
                 cargo,
                 bus);
+
+
+            ServiceStation serviceStation = new ServiceStation();
+            serviceStation.addCar(car);
+            serviceStation.addCargo(cargo);
+            serviceStation.service();
+            serviceStation.service();
+
         for (Transport transport:transports){
             printInfo(transport);
         }
