@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Car extends Transport implements Competing {
     private BodyType bodyType;
     public Car(String make, String model, double engineCapacity,
@@ -68,6 +70,19 @@ public class Car extends Transport implements Competing {
     public float maximumSpeed() {
         System.out.println(" Максимальная скорость легкового автомобиля ");
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return bodyType == car.bodyType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bodyType);
     }
 
     public BodyType getBodyType() {

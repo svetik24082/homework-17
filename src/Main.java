@@ -41,6 +41,7 @@ public class Main {
         Bus bus = new Bus(" Икарус", "250", 0, TypeOfCapacity.LARGE);
         bus.addDriver(new DriverD("A", 5, bus));
         bus.addMechanic(petr);
+        bus.addMechanic(petr);
         bus.addSponsor(nokian);
         Bus bus1 = new Bus(" ПАЗ", "32053", 16, TypeOfCapacity.SMALL);
         Bus bus2 = new Bus(" Вольво", null, 17, TypeOfCapacity.MEDIUM);
@@ -91,59 +92,52 @@ public class Main {
                 bus);
 
 
-            ServiceStation serviceStation = new ServiceStation();
-            serviceStation.addCar(car);
-            serviceStation.addCargo(cargo);
-            serviceStation.service();
-            serviceStation.service();
+        ServiceStation serviceStation = new ServiceStation();
+        serviceStation.addCar(car);
+        serviceStation.addCargo(cargo);
+        serviceStation.service();
+        serviceStation.service();
 
-        for (Transport transport:transports){
+        for (Transport transport : transports) {
             printInfo(transport);
         }
     }
-    private static void printInfo(Transport transport){
+
+    private static void printInfo(Transport transport) {
         System.out.println(" Информация по автомобилю " +
-                transport.getMake()+" "+ transport.getModel());
+                transport.getMake() + " " + transport.getModel());
         System.out.println(" Водитель " + transport.getDrivers());
 
 
-        System.out.println(" Спонсор " + transport.getSponsors()  );
+        System.out.println(" Спонсор " + transport.getSponsors());
 
-        System.out.println(" Механик " + transport.getMechanics() );
+        System.out.println(" Механик " + transport.getMechanics());
 
         System.out.println();
 
 
-        //System.out.println(driverB);
-        //System.out.println(driverC);
-        //System.out.println(driverD);
-
-        //car.determineTheTypeOfCar();
-        //cargo.determineTheTypeOfCar();
-        //bus.determineTheTypeOfCar();
     }
-    private static void passDiagnostics(Transport...transports){
-        for (Transport transport:transports){
 
-                serviceTransport(transport);
-            }
+    private static void passDiagnostics(Transport... transports) {
+        for (Transport transport : transports) {
 
-                }
-
-
-
-
-private static void serviceTransport(Transport transport) {
-    try {
-        if (!transport.passDiagnostics()) {
-            throw new RuntimeException(" Автомобиль" + transport.getMake() +
-                    " " + transport.getModel() + " не прошел диагностику");
+            serviceTransport(transport);
         }
-    } catch (RuntimeException c) {
-        System.out.println(c.getMessage());
+
     }
-}
-//private static ArrayList<Driver>drivers;
+
+
+    private static void serviceTransport(Transport transport) {
+        try {
+            if (!transport.passDiagnostics()) {
+                throw new RuntimeException(" Автомобиль" + transport.getMake() +
+                        " " + transport.getModel() + " не прошел диагностику");
+            }
+        } catch (RuntimeException c) {
+            System.out.println(c.getMessage());
+        }
+    }
+
 
 }
 

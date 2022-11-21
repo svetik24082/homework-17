@@ -1,9 +1,12 @@
+import java.util.Objects;
+
 public class Cargo extends Transport implements Competing {
     private TypeOfLoadCapacity typeOfLoadCapacity;
+
     public Cargo(String make, String model, double engineCapacity,
                  TypeOfLoadCapacity typeOfLoadCapacity) {
         super(make, model, engineCapacity);
-        this.typeOfLoadCapacity=typeOfLoadCapacity;
+        this.typeOfLoadCapacity = typeOfLoadCapacity;
     }
 
     @Override
@@ -26,29 +29,29 @@ public class Cargo extends Transport implements Competing {
 
     @Override
     public void determineTheTypeOfCar() {
-        if (typeOfLoadCapacity==null) {
+        if (typeOfLoadCapacity == null) {
             System.out.println(" Данных по авто не достаточно");
-        }else {
-            String from = typeOfLoadCapacity.getFrom() ==null? "" : " от " + typeOfLoadCapacity.getFrom() + "";
-            String to = typeOfLoadCapacity.getTo() ==null? "" : " до " + typeOfLoadCapacity.getTo();
-            System.out.println(" Грузоподъемность авто " + from+ to);
+        } else {
+            String from = typeOfLoadCapacity.getFrom() == null ? "" : " от " + typeOfLoadCapacity.getFrom() + "";
+            String to = typeOfLoadCapacity.getTo() == null ? "" : " до " + typeOfLoadCapacity.getTo();
+            System.out.println(" Грузоподъемность авто " + from + to);
         }
 
     }
 
     @Override
     public boolean passDiagnostics() {
-        return Math.random()> 0.75;
+        return Math.random() > 0.75;
     }
 
     @Override
     public void repair() {
-        System.out.println( "Грузовик " + getMake() + " "+getModel()+ " починена" );
+        System.out.println("Грузовик " + getMake() + " " + getModel() + " починена");
     }
 
     @Override
     public boolean service() {
-        return Math.random()> 0.8;
+        return Math.random() > 0.8;
     }
 
 
@@ -76,5 +79,18 @@ public class Cargo extends Transport implements Competing {
 
     public void setTypeOfLoadCapacity(TypeOfLoadCapacity typeOfLoadCapacity) {
         this.typeOfLoadCapacity = typeOfLoadCapacity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cargo cargo = (Cargo) o;
+        return typeOfLoadCapacity == cargo.typeOfLoadCapacity;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(typeOfLoadCapacity);
     }
 }

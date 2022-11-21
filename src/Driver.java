@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Driver <T extends Transport> {
     private  final  String fullName;
     private String driverSLicense;
@@ -58,6 +60,19 @@ public class Driver <T extends Transport> {
     public void refill() {
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver<?> driver = (Driver<?>) o;
+        return experience == driver.experience && Objects.equals(fullName, driver.fullName) && Objects.equals(driverSLicense, driver.driverSLicense) && Objects.equals(car, driver.car);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName, driverSLicense, experience, car);
+    }
 
     public String validOrDefault(String value, String defaultValue) {
         if (value == null || value.isBlank()) {
